@@ -1,303 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Family Command Center</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Family Dashboard</title>
 <style>
-:root{
-  --bg:#eef3f8; --panel:#ffffff; --ink:#1f2937; --muted:#64748b;
-  --parent:#6d28d9; --six:#2563eb; --three:#059669; --accent:#0f172a;
-  --soft:#f8fafc; --line:#dbe4ee; --done:#d1fae5; --warn:#fff7ed;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-.app{min-height:100vh;padding:20px}
-.topbar{display:grid;grid-template-columns:1.5fr 1fr auto;gap:14px;align-items:stretch;margin-bottom:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px}
-.date-main{font-size:clamp(28px,3.6vw,54px);font-weight:800;line-height:1}
-.date-sub{font-size:clamp(16px,1.7vw,25px);color:var(--muted);margin-top:8px}
-.weather{display:flex;align-items:center;gap:16px}
-.weather-icon{font-size:44px}
-.weather-temp{font-size:38px;font-weight:800}
-.weather-sub{color:var(--muted);font-size:16px}
-.parent-button{min-width:150px;border:0;border-radius:18px;background:var(--accent);color:#fff;font-weight:700;padding:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.section{min-width:0}
-.section h2{margin:0 0 12px;font-size:clamp(22px,2.2vw,34px)}
-.parent h2{color:var(--parent)} .six h2{color:var(--six)} .three h2{color:var(--three)}
-.list{display:grid;gap:10px}
-.item{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--soft);min-height:64px}
-.item .icon{font-size:26px;min-width:32px;text-align:center}
-.item .txt{flex:1;min-width:0}
-.item .title{font-size:18px;font-weight:700}
-.item .meta{font-size:14px;color:var(--muted);margin-top:3px}
-.task{width:100%;text-align:left;border:1px solid var(--line);background:var(--soft);color:var(--ink)}
-.task.done{background:var(--done);opacity:.72;text-decoration:line-through}
-.check{font-size:28px}
-.progress{height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:10px 0 14px}
-.progress > div{height:100%;width:0;background:currentColor;transition:width .2s}
-.six .progress{color:var(--six)} .three .progress{color:var(--three)}
-.timerbox{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
-.timer{font-size:30px;font-weight:800;min-width:90px}
-.smallbtn{border:0;border-radius:12px;background:#e2e8f0;padding:11px 16px;font-weight:700}
-.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.62);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-.modal.open{display:flex}
-.editor{width:min(940px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;padding:20px}
-.editor h3{margin:0 0 14px}
-.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{display:grid;gap:6px}
-.field label{font-size:13px;color:var(--muted);font-weight:700}
-.field input,.field textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.field textarea{min-height:100px;resize:vertical}
-.full{grid-column:1/-1}
-.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
-.primary{border:0;border-radius:12px;padding:12px 18px;background:var(--accent);color:#fff;font-weight:700}
-.secondary{border:1px solid var(--line);border-radius:12px;padding:12px 18px;background:#fff;font-weight:700}
-.notice{font-size:12px;color:var(--muted);margin-top:10px}
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr}
-  .topbar{grid-template-columns:1fr 1fr}
-  .parent-button{grid-column:1/-1}
-  .editor-grid{grid-template-columns:1fr}
-}
+:root{--bg:#cfd3d8;--card:#f7f8fa;--ink:#1f2937;--muted:#64748b;--navy:#243b5a;--blue:#2f6fb5;--green:#3d8b68;--done:#dff3e7;--amber:#fff1c7;--red:#fde2e2;--line:#d7dde4}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}button{font:inherit}.app{padding:20px;min-height:100vh}.top{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}.day{font-size:clamp(34px,4vw,58px);font-weight:800}.date{font-size:clamp(17px,2vw,27px);color:var(--muted);margin-top:6px}.weather{display:flex;align-items:center;gap:14px}.wxicon{font-size:48px}.wxtemp{font-size:42px;font-weight:800}.wxsub{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.section h2{margin:0 0 12px;font-size:clamp(26px,2.5vw,38px)}.family h2{color:var(--navy)}.jr h2{color:var(--blue)}.xavier h2{color:var(--green)}.list{display:grid;gap:10px}.item{display:flex;gap:12px;align-items:center;min-height:64px;padding:13px;border:1px solid var(--line);border-radius:16px;background:#fff}.task{width:100%;text-align:left;color:var(--ink)}.task.done{background:var(--done);opacity:.72;text-decoration:line-through}.icon{font-size:26px;min-width:34px;text-align:center}.txt{flex:1;min-width:0}.title{font-size:18px;font-weight:750}.meta{font-size:14px;color:var(--muted);margin-top:3px}.check{font-size:28px}.important{background:var(--red)}.upcoming{background:var(--amber)}.progress{height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:8px 0 14px}.bar{height:100%;width:0}.jr .bar{background:var(--blue)}.xavier .bar{background:var(--green)}.timerrow{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}.timer{font-size:30px;font-weight:800}.btn{border:0;border-radius:12px;padding:10px 15px;background:#e2e8f0;font-weight:700}.subhead{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin:16px 0 8px}.empty{padding:16px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}.status{font-size:12px;color:var(--muted);margin-top:8px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.top{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-<div class="app">
-  <div class="topbar">
-    <div class="card">
-      <div id="dayName" class="date-main">Saturday</div>
-      <div id="fullDate" class="date-sub">August 22, 2026</div>
-    </div>
-    <div class="card weather">
-      <div id="weatherIcon" class="weather-icon">⛅</div>
-      <div>
-        <div id="weatherTemp" class="weather-temp">--°</div>
-        <div id="weatherText" class="weather-sub">Set city in Parent Edit</div>
-      </div>
-    </div>
-    <button id="openEditor" class="parent-button">Parent Edit</button>
-  </div>
-
-  <div class="grid">
-    <section class="card section parent">
-      <h2>Family</h2>
-      <div id="familyList" class="list"></div>
-    </section>
-
-    <section class="card section six">
-      <h2>Age 6</h2>
-      <div id="sixProgressText" class="date-sub">0 of 0 done</div>
-      <div class="progress"><div id="sixProgress"></div></div>
-      <div id="sixList" class="list"></div>
-      <div class="timerbox">
-        <div id="timer" class="timer">15:00</div>
-        <button id="timerStart" class="smallbtn">Start</button>
-        <button id="timerReset" class="smallbtn">Reset</button>
-      </div>
-    </section>
-
-    <section class="card section three">
-      <h2>Age 3</h2>
-      <div id="threeProgressText" class="date-sub">0 of 0 done</div>
-      <div class="progress"><div id="threeProgress"></div></div>
-      <div id="threeList" class="list"></div>
-    </section>
-  </div>
-</div>
-
-<div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Parent edit">
-  <div class="editor">
-    <h3>Parent Edit</h3>
-    <div class="editor-grid">
-      <div class="field">
-        <label>Weather city or ZIP</label>
-        <input id="locationInput" placeholder="Example: Rockford, IL or 61101">
-      </div>
-      <div class="field">
-        <label>Parent PIN (optional)</label>
-        <input id="pinInput" inputmode="numeric" placeholder="Leave blank for no PIN">
-      </div>
-      <div class="field full">
-        <label>Family calendar — one event per line: Date | Event | Time/Note</label>
-        <textarea id="familyInput"></textarea>
-      </div>
-      <div class="field">
-        <label>Age 6 — one task per line</label>
-        <textarea id="sixInput"></textarea>
-      </div>
-      <div class="field">
-        <label>Age 3 — one task per line</label>
-        <textarea id="threeInput"></textarea>
-      </div>
-    </div>
-    <div class="actions">
-      <button id="resetData" class="secondary">Reset Example</button>
-      <button id="closeEditor" class="secondary">Cancel</button>
-      <button id="saveEditor" class="primary">Save</button>
-    </div>
-    <div class="notice">
-      This first version stores edits in the board browser. Cisco Web Apps can clear browser storage when a session ends,
-      so use this for layout/testing. The next production version should store weekly updates in a shared cloud source so
-      edits from a parent's phone persist reliably.
-    </div>
-  </div>
-</div>
-
+<body><div class="app">
+<div class="top"><div class="card"><div id="day" class="day"></div><div id="date" class="date"></div></div><div class="card weather"><div id="wxicon" class="wxicon">⛅</div><div><div id="wxtemp" class="wxtemp">--°</div><div id="wxsub" class="wxsub">Poplar Grove, IL</div></div></div></div>
+<div class="grid">
+<section class="card section family"><h2>Family</h2><div id="familyTasks" class="list"></div><div class="subhead">UPCOMING FAMILY CALENDAR</div><div id="familyEvents" class="list"></div><div id="feedStatus" class="status"></div></section>
+<section class="card section jr"><h2>Erek Jr.</h2><div id="jrProgressText" class="date"></div><div class="progress"><div id="jrProgress" class="bar"></div></div><div id="jrTasks" class="list"></div><div class="subhead">THIS WEEK</div><div id="jrInfo" class="list"></div><div class="timerrow"><div id="timer" class="timer">20:00</div><button id="start" class="btn">Start</button><button id="reset" class="btn">Reset</button></div></section>
+<section class="card section xavier"><h2>Xavier</h2><div id="xProgressText" class="date"></div><div class="progress"><div id="xProgress" class="bar"></div></div><div id="xTasks" class="list"></div><div class="subhead">SCHOOL</div><div id="xInfo" class="list"></div></section>
+</div></div>
 <script>
-const DEFAULT_DATA = {
-  location: "",
-  pin: "",
-  family: [
-    "Sat 8/22 | Santiago's Birthday Party | 4:00–7:00 PM",
-    "Tue 8/25 | First day of school |",
-    "Thu 8/27 | Fall Photos | Appointment?"
-  ],
-  six: ["Math / worksheet","Read 15 minutes","Spelling / sight words","Pack homework folder"],
-  three: ["Pick up toys","Choose tomorrow's clothes","Brush teeth","Story time"]
-};
-
-const KEY="familyCommandCenterV1";
-let data=loadData();
-let timerSeconds=900, timerInterval=null;
-
-function loadData(){
-  try { return {...DEFAULT_DATA, ...JSON.parse(localStorage.getItem(KEY)||"{}")}; }
-  catch(e){ return structuredClone(DEFAULT_DATA); }
-}
-function saveData(){ localStorage.setItem(KEY, JSON.stringify(data)); }
-
-function setDate(){
-  const d=new Date();
-  document.getElementById("dayName").textContent=d.toLocaleDateString([], {weekday:"long"});
-  document.getElementById("fullDate").textContent=d.toLocaleDateString([], {month:"long",day:"numeric",year:"numeric"});
-}
-
-function renderFamily(){
-  const root=document.getElementById("familyList");
-  root.innerHTML="";
-  const rows=data.family.filter(Boolean);
-  if(!rows.length){root.innerHTML='<div class="empty">No family events entered.</div>';return;}
-  rows.forEach(row=>{
-    const [date,event,note]=row.split("|").map(s=>(s||"").trim());
-    const div=document.createElement("div"); div.className="item";
-    div.innerHTML=`<div class="icon">📅</div><div class="txt"><div class="title">${escapeHtml(event||row)}</div><div class="meta">${escapeHtml([date,note].filter(Boolean).join(" • "))}</div></div>`;
-    root.appendChild(div);
-  });
-}
-
-function renderTasks(kind){
-  const tasks=data[kind]||[];
-  const root=document.getElementById(kind+"List");
-  const completed=JSON.parse(localStorage.getItem(KEY+"_"+kind+"_done")||"[]");
-  root.innerHTML="";
-  if(!tasks.length){root.innerHTML='<div class="empty">No tasks entered.</div>';updateProgress(kind,0,0);return;}
-  tasks.forEach((t,i)=>{
-    const b=document.createElement("button"); b.className="item task"+(completed.includes(i)?" done":"");
-    b.innerHTML=`<div class="icon">${kind==="six"?"✏️":"⭐"}</div><div class="txt"><div class="title">${escapeHtml(t)}</div></div><div class="check">${completed.includes(i)?"✓":"○"}</div>`;
-    b.addEventListener("click",()=>{
-      let c=JSON.parse(localStorage.getItem(KEY+"_"+kind+"_done")||"[]");
-      c=c.includes(i)?c.filter(x=>x!==i):[...c,i];
-      localStorage.setItem(KEY+"_"+kind+"_done",JSON.stringify(c));
-      renderTasks(kind);
-    });
-    root.appendChild(b);
-  });
-  updateProgress(kind,completed.length,tasks.length);
-}
-
-function updateProgress(kind,done,total){
-  document.getElementById(kind+"ProgressText").textContent=`${done} of ${total} done`;
-  document.getElementById(kind+"Progress").style.width=(total?Math.round(done/total*100):0)+"%";
-}
-
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
-
-async function updateWeather(){
-  const loc=(data.location||"").trim();
-  if(!loc) return;
-  const text=document.getElementById("weatherText"), temp=document.getElementById("weatherTemp"), icon=document.getElementById("weatherIcon");
-  try{
-    text.textContent="Updating weather…";
-    const geo=await fetch("https://geocoding-api.open-meteo.com/v1/search?count=1&language=en&format=json&name="+encodeURIComponent(loc)).then(r=>r.json());
-    if(!geo.results?.length) throw new Error("Location not found");
-    const g=geo.results[0];
-    const wx=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${g.latitude}&longitude=${g.longitude}&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=auto`).then(r=>r.json());
-    const c=wx.current||{};
-    temp.textContent=Math.round(c.temperature_2m)+"°";
-    const desc=weatherDescription(c.weather_code);
-    text.textContent=`${desc} • ${g.name}${g.admin1?", "+g.admin1:""}`;
-    icon.textContent=weatherIcon(c.weather_code);
-  }catch(e){temp.textContent="--°";text.textContent="Weather unavailable";icon.textContent="⛅";}
-}
-
-function weatherDescription(c){
-  if(c===0)return"Clear"; if([1,2].includes(c))return"Partly cloudy"; if(c===3)return"Cloudy";
-  if([45,48].includes(c))return"Foggy"; if([51,53,55,56,57].includes(c))return"Drizzle";
-  if([61,63,65,66,67,80,81,82].includes(c))return"Rain"; if([71,73,75,77,85,86].includes(c))return"Snow";
-  if([95,96,99].includes(c))return"Storms"; return"Current weather";
-}
-function weatherIcon(c){
-  if(c===0)return"☀️"; if([1,2].includes(c))return"🌤️"; if(c===3)return"☁️";
-  if([45,48].includes(c))return"🌫️"; if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(c))return"🌧️";
-  if([71,73,75,77,85,86].includes(c))return"❄️"; if([95,96,99].includes(c))return"⛈️"; return"⛅";
-}
-
-function openEditor(){
-  if(data.pin){
-    const entered=prompt("Parent PIN");
-    if(entered!==data.pin) return;
-  }
-  locationInput.value=data.location||"";
-  pinInput.value=data.pin||"";
-  familyInput.value=(data.family||[]).join("\n");
-  sixInput.value=(data.six||[]).join("\n");
-  threeInput.value=(data.three||[]).join("\n");
-  modal.classList.add("open");
-}
-function lines(v){return v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);}
-
-openEditorBtn=document.getElementById("openEditor");
-const modal=document.getElementById("modal"),locationInput=document.getElementById("locationInput"),pinInput=document.getElementById("pinInput"),familyInput=document.getElementById("familyInput"),sixInput=document.getElementById("sixInput"),threeInput=document.getElementById("threeInput");
-openEditorBtn.addEventListener("click",openEditor);
-document.getElementById("closeEditor").addEventListener("click",()=>modal.classList.remove("open"));
-document.getElementById("saveEditor").addEventListener("click",()=>{
-  data={location:locationInput.value.trim(),pin:pinInput.value.trim(),family:lines(familyInput.value),six:lines(sixInput.value),three:lines(threeInput.value)};
-  saveData();
-  localStorage.removeItem(KEY+"_six_done"); localStorage.removeItem(KEY+"_three_done");
-  modal.classList.remove("open"); renderAll();
-});
-document.getElementById("resetData").addEventListener("click",()=>{
-  data=structuredClone(DEFAULT_DATA); saveData();
-  localStorage.removeItem(KEY+"_six_done"); localStorage.removeItem(KEY+"_three_done");
-  modal.classList.remove("open"); renderAll();
-});
-
-function paintTimer(){
-  const m=Math.floor(timerSeconds/60),s=timerSeconds%60;
-  document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-}
-document.getElementById("timerStart").addEventListener("click",()=>{
-  const btn=document.getElementById("timerStart");
-  if(timerInterval){clearInterval(timerInterval);timerInterval=null;btn.textContent="Start";return;}
-  btn.textContent="Pause";
-  timerInterval=setInterval(()=>{
-    if(timerSeconds>0){timerSeconds--;paintTimer();}
-    else{clearInterval(timerInterval);timerInterval=null;btn.textContent="Start";alert("Focus time finished!");}
-  },1000);
-});
-document.getElementById("timerReset").addEventListener("click",()=>{
-  if(timerInterval)clearInterval(timerInterval);timerInterval=null;timerSeconds=900;paintTimer();document.getElementById("timerStart").textContent="Start";
-});
-
-function renderAll(){setDate();renderFamily();renderTasks("six");renderTasks("three");paintTimer();updateWeather();}
-renderAll();
-setInterval(setDate,60000);
-setInterval(updateWeather,30*60*1000);
-</script>
-</body>
-</html>
+const FEED='https://script.google.com/macros/s/AKfycbyj5sSswCL-XPV_rL1Xf0pgByZA8tfOocTa_wwu1TA1UQSFqrIIM3O_PLU3Veg4W1hs/exec';
+const verses=[['2026-08-26','Job 19:25','For I know that my Redeemer lives.'],['2026-09-02','Psalm 31:14','I trust in You, O Lord.'],['2026-09-09','Psalm 30:10','Hear, O Lord, and be merciful to me!'],['2026-09-16','Zechariah 8:13','You shall be a blessing.'],['2026-09-23','Genesis 50:20','You meant evil against me, but God meant it for good.'],['2026-09-30','Psalm 50:15','Call upon Me in the day of trouble.'],['2026-10-07','Galatians 6:10','Bear one another’s burdens.'],['2026-10-14','Psalm 95:6','Oh come, let us worship and bow down.'],['2026-10-21','Joshua 1:9','Do not be afraid…for the Lord your God is with you.'],['2026-10-28','1 Samuel 3:10','Speak, for Your servant hears.'],['2026-11-04','Psalm 22:7','The Lord is my strength.'],['2026-11-11','Psalm 122:1','Let us go to the house of the Lord!'],['2026-11-18','1 Kings 18:39','The Lord, He is God.'],['2026-11-24','Exodus 20:4','You shall not make for yourself a carved image.'],['2026-12-02','Jeremiah 10:1','Hear the word that the Lord speaks to you.'],['2026-12-09','Jeremiah 29:11','For I know the plans I have for you…to give you a future and a hope.'],['2026-12-16','Luke 1:47','My spirit rejoices in God my Savior.']];
+const spelling=['sat','tag','mad','gap','hit','dim','lip','six','not','does'];
+function localDate(){return new Date()}function ymd(d){return d.toLocaleDateString('en-CA')}function wkKey(){const d=localDate(),one=new Date(d.getFullYear(),0,1);return d.getFullYear()+'-'+Math.ceil((((d-one)/86400000)+one.getDay()+1)/7)}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function setDate(){const d=localDate();day.textContent=d.toLocaleDateString([], {weekday:'long'});date.textContent=d.toLocaleDateString([], {month:'long',day:'numeric',year:'numeric'})}
+function item(icon,title,meta='',cls=''){return `<div class="item ${cls}"><div class="icon">${icon}</div><div class="txt"><div class="title">${esc(title)}</div>${meta?`<div class="meta">${esc(meta)}</div>`:''}</div></div>`}
+function task(kind,id,icon,title,meta=''){const key='fd-'+kind+'-'+(id.startsWith('read')?wkKey():ymd(localDate()))+'-'+id;const done=localStorage.getItem(key)==='1';return `<button class="item task ${done?'done':''}" data-key="${key}" data-kind="${kind}"><div class="icon">${icon}</div><div class="txt"><div class="title">${esc(title)}</div>${meta?`<div class="meta">${esc(meta)}</div>`:''}</div><div class="check">${done?'✓':'○'}</div></button>`}
+function bindTasks(){document.querySelectorAll('.task').forEach(b=>b.onclick=()=>{localStorage.setItem(b.dataset.key,b.classList.contains('done')?'0':'1');render()})}
+function dayNum(){return localDate().getDay()}function currentVerse(){const today=ymd(localDate());return verses.find(v=>v[0]>=today)||verses[verses.length-1]}
+function render(){setDate();const dow=dayNum();let fam=[task('fam','laundry','🧺','Wash uniforms & work clothes','Sports uniforms, school uniforms and work clothes for the week')];if(dow===1)fam.push(task('fam','trash','🗑️','Garbage night','Jr.: empty bedroom trash + bathroom trash'));familyTasks.innerHTML=fam.join('');
+let jr=[];jr.push(task('jr','memory','📖','Practice memory verse'));jr.push(task('jr','spelling','✏️','Practice spelling words'));if(dow>=1&&dow<=5)jr.push(task('jr','math','➗','Check folder for math homework','Return completed homework the next school day'));for(let i=1;i<=3;i++)jr.push(task('jr','read'+i,'📚',`Reading session ${i} of 3`,'20 minutes'));
+if(dow===2||dow===0)jr.push(task('jr','footballpack','🏈','Pack for flag football tomorrow','Change of clothes • mouth guard • gym shoes'));if(dow===1||dow===3)jr.push(item('🏈','Flag football practice — 3:00 PM','Season through Oct. 24','upcoming'));if(dow===3)jr.push(task('jr','librarypack','📚','Pack library book tonight','Library is Thursday'));if(dow===4)jr.push(item('📚','Library Day','Return previous book to check out a new one','upcoming'));if(dow===3)jr.push(item('⛪','Chapel + Memory Test','Wednesday','important'));if(dow===5)jr.push(item('📝','Spelling Test','Friday','important'));
+const d=localDate(),socStart=new Date('2026-09-12T00:00:00'),socEnd=new Date('2026-10-24T23:59:59');if(dow===6&&d>=socStart&&d<=socEnd)jr.push(item('⚽','Soccer game — 11:00 AM','Saturday','upcoming'));jrTasks.innerHTML=jr.join('');
+const v=currentVerse();jrInfo.innerHTML=item('📖',v[1]+' — '+v[2],'Memory test '+new Date(v[0]+'T12:00:00').toLocaleDateString([], {weekday:'long',month:'short',day:'numeric'}),'important')+item('🔤','Spelling: '+spelling.join(' • '),'Test Friday');
+let xt=[];if([2,3,4].includes(dow))xt.push(task('x','school','🎒','School today'));else xt.push(item('🏠','No school today','School is Tuesday–Thursday'));xTasks.innerHTML=xt.join('');xInfo.innerHTML=item('🎒','School Tuesday–Thursday','');bindTasks();updateProgress('jr');updateProgress('x')}
+function updateProgress(kind){const all=[...document.querySelectorAll(`.task[data-kind="${kind}"]`)],done=all.filter(x=>x.classList.contains('done')).length,pct=all.length?Math.round(done/all.length*100):0;if(kind==='jr'){jrProgressText.textContent=`${done} of ${all.length} done`;jrProgress.style.width=pct+'%'}else{xProgressText.textContent=`${done} of ${all.length} done`;xProgress.style.width=pct+'%'}}
+async function familyFeed(){try{feedStatus.textContent='Updating…';const r=await fetch(FEED,{cache:'no-store'});if(!r.ok)throw new Error();const j=await r.json();if(!j.ok)throw new Error();familyEvents.innerHTML=(j.events||[]).length?(j.events||[]).map(e=>item('📅',e.title,[e.day,e.date,[e.startTime,e.endTime].filter(Boolean).join('–')].filter(Boolean).join(' • '))).join(''):'<div class="empty">No upcoming family events.</div>';feedStatus.textContent='Family calendar updated automatically'}catch(e){familyEvents.innerHTML='<div class="empty">Family calendar unavailable.</div>';feedStatus.textContent='Check calendar feed deployment/access settings'}}
+async function weather(){try{const j=await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.37&longitude=-88.82&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FChicago').then(r=>r.json()),c=j.current;wxtemp.textContent=Math.round(c.temperature_2m)+'°';const code=c.weather_code;wxicon.textContent=code===0?'☀️':[1,2].includes(code)?'🌤️':code===3?'☁️':[61,63,65,80,81,82].includes(code)?'🌧️':[71,73,75,85,86].includes(code)?'❄️':[95,96,99].includes(code)?'⛈️':'⛅';wxsub.textContent='Poplar Grove, IL'}catch(e){wxsub.textContent='Poplar Grove, IL • weather unavailable'}}
+let sec=1200,int=null;function paint(){timer.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}start.onclick=()=>{if(int){clearInterval(int);int=null;start.textContent='Start';return}start.textContent='Pause';int=setInterval(()=>{if(sec>0){sec--;paint()}else{clearInterval(int);int=null;start.textContent='Start';alert('Reading / focus session complete!')}},1000)};reset.onclick=()=>{if(int)clearInterval(int);int=null;sec=1200;paint();start.textContent='Start'};
+render();familyFeed();weather();setInterval(setDate,60000);setInterval(familyFeed,15*60000);setInterval(weather,30*60000);
+</script></body></html>
